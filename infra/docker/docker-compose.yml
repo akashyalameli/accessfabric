@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: authbridge-postgres
+    environment:
+      POSTGRES_DB: authbridge
+      POSTGRES_USER: authbridge
+      POSTGRES_PASSWORD: authbridge
+      TZ: Asia/Kolkata
+      PGTZ: Asia/Kolkata
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

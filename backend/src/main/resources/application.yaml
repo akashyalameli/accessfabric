@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: authbridge
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authbridge
+    username: authbridge
+    password: authbridge
+
+  jackson:
+    time-zone: Asia/Kolkata
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+  flyway:
+    enabled: true
+
+server:
+  port: 8080
+
+springdoc:
+  api-docs:
+    path: /api/docs
+  swagger-ui:
+    path: /swagger
+
+logging:
+  level:
+    root: INFO
