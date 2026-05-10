@@ -21,6 +21,11 @@ spring:
   flyway:
     enabled: true
 
+auth:
+  jwt:
+    secret: authbridge-super-secure-jwt-secret-key-2026
+    expiration-minutes: 60
+
 server:
   port: 8080
 

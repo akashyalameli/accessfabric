@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-@Component
+/*@Component
 public class TenantFilter implements Filter {
 
     private static final String TENANT_HEADER = "X-Tenant-Id";
@@ -34,4 +34,4 @@ public class TenantFilter implements Filter {
             TenantContext.clear();
         }
     }
-}
+}*/
