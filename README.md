@@ -236,6 +236,14 @@ docker compose up -d
 
 ---
 
+### Optional Environment Variables
+
+```bash
+AUTHBRIDGE_JWT_SECRET=your-secure-secret
+```
+
+---
+
 ### Run Backend
 
 From backend directory:

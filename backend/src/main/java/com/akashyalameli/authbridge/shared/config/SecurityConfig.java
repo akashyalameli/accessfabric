@@ -7,7 +7,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.akashyalameli.authbridge.auth.infrastructure.JwtAuthenticationFilter;
 
-//import jakarta.servlet.http.HttpServletResponse;
+//import jakarta.servlet.http.HttpServletResponse; //Yet to solve the issue between 401s and 403s
 
 @Configuration
 public class SecurityConfig {

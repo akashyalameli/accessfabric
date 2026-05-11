@@ -23,7 +23,7 @@ spring:
 
 auth:
   jwt:
-    secret: authbridge-super-secure-jwt-secret-key-2026
+    secret: ${AUTHBRIDGE_JWT_SECRET:change-me-in-production}
     expiration-minutes: 60
 
 server:
