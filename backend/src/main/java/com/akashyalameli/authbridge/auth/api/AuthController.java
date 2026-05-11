@@ -30,6 +30,17 @@ public class AuthController {
         return Map.of("status", "registered");
     }
 
+    @PostMapping("/register-admin")
+    @SecurityRequirements()
+    public Map<String, String> registerAdmin(
+            @RequestParam UUID tenantId,
+            @RequestParam String email,
+            @RequestParam String password
+    ) {
+        service.registerAdmin(tenantId, email, password);
+        return Map.of("status", "registered");
+    }
+
     @PostMapping("/login")
     @SecurityRequirements()
     public TokenResponse login(

@@ -3,6 +3,7 @@ package com.akashyalameli.authbridge.auth.application;
 import com.akashyalameli.authbridge.auth.api.TokenResponse;
 import com.akashyalameli.authbridge.auth.domain.RefreshToken;
 import com.akashyalameli.authbridge.auth.infrastructure.RefreshTokenRepository;
+import com.akashyalameli.authbridge.identity.domain.Role;
 import com.akashyalameli.authbridge.identity.domain.User;
 import com.akashyalameli.authbridge.identity.infrastructure.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,7 +33,21 @@ public class AuthService {
                 tenantId,
                 email,
                 encoder.encode(password),
-                Instant.now()
+                Instant.now(),
+                Role.USER
+        );
+
+        return users.save(user);
+    }
+
+    public User registerAdmin(UUID tenantId, String email, String password) {
+        User user = new User(
+                UUID.randomUUID(),
+                tenantId,
+                email,
+                encoder.encode(password),
+                Instant.now(),
+                Role.ADMIN
         );
 
         return users.save(user);
@@ -47,13 +62,12 @@ public class AuthService {
                 .filter(u -> encoder.matches(password, u.getPasswordHash()))
                 .orElseThrow(() -> new RuntimeException("Invalid credentials"));
         
-        String accessToken = jwtService.generate(user.getId().toString(), user.getTenantId().toString());
+        String accessToken = jwtService.generate(user.getId().toString(), user.getTenantId().toString(), user.getRole());
         String refreshTokenValue = generateRefreshToken();
 
         RefreshToken refreshToken = new RefreshToken(
             UUID.randomUUID(),
             user.getId(),
-            user.getTenantId(),
             refreshTokenValue,
             Instant.now().plusSeconds(604800),
             false,
@@ -74,15 +88,17 @@ public class AuthService {
         existing.revoke();
         refreshTokens.save(existing);
 
+        User user = users.findById(existing.getUserId())
+        .orElseThrow(() -> new RuntimeException("User not found"));
+
         String accessToken =
-                jwtService.generate(existing.getUserId().toString(), existing.getTenantId().toString());
+                jwtService.generate(user.getId().toString(), user.getTenantId().toString(), user.getRole());
 
         String newRefresh = generateRefreshToken();
 
         RefreshToken replacement = new RefreshToken(
                 UUID.randomUUID(),
-                existing.getUserId(),
-                existing.getTenantId(),
+                user.getId(),
                 newRefresh,
                 Instant.now().plusSeconds(604800),
                 false,

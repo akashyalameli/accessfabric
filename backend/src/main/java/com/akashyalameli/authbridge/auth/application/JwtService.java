@@ -5,6 +5,8 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.akashyalameli.authbridge.identity.domain.Role;
+
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
@@ -24,12 +26,13 @@ public class JwtService {
         this.expirationMinutes = expirationMinutes;
     }
 
-    public String generate(String subject, String tenantId) {
+    public String generate(String subject, String tenantId, Role role) {
         Instant now = Instant.now();
 
         return Jwts.builder()
                 .subject(subject)
                 .claim("tenantId", tenantId)
+                .claim("role", role.name())
                 .issuedAt(Date.from(now))
                 .expiration(Date.from(now.plusSeconds(expirationMinutes * 60)))
                 .signWith(key)
@@ -61,5 +64,15 @@ public class JwtService {
                 .parseSignedClaims(token)
                 .getPayload()
                 .get("tenantId", String.class);
+    }
+
+    public Role extractRole(String token) {
+        String role = Jwts.parser()
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .get("role", String.class);
+        return Role.valueOf(role);
     }
 }
