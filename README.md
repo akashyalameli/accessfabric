@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="assets/authbridge-banner.png" alt="AuthBridge Banner"/>
+</p>
 # AuthBridge
 
 Enterprise-grade multi-tenant authentication and authorization platform built for modern SaaS systems.
