@@ -23,7 +23,7 @@ spring:
 
 auth:
   jwt:
-    secret: ${AUTHBRIDGE_JWT_SECRET:change-authbridge-super-secure-jwt-secret-key-2026-in-production}
+    secret: ${ACCESSFABRIC_JWT_SECRET:change-authbridge-super-secure-jwt-secret-key-2026-in-production}
     expiration-minutes: 60
 
 server:
