@@ -1,8 +1,8 @@
-# AuthBridge Architecture Overview
+# AccessFabric Architecture Overview
 
 ## Introduction
 
-AuthBridge is a modular multi-tenant authentication and authorization platform designed around modern identity-system architecture principles.
+AccessFabric is a modular multi-tenant authentication and authorization platform designed around modern identity-system architecture principles.
 
 The platform focuses on:
 
@@ -18,7 +18,7 @@ The system is intentionally designed as a modular monolith to optimize developme
 
 # Architectural Goals
 
-The primary architectural goals of AuthBridge are:
+The primary architectural goals of AccessFabric are:
 
 - Strong separation of concerns
 - Security-first design
@@ -54,7 +54,7 @@ PostgreSQL
 # Modular Structure
 
 ```plaintext
-authbridge/
+accessfabric/
  ├── auth/
  ├── identity/
  ├── tenant/
@@ -175,7 +175,7 @@ Protected Resource Access
 
 # Refresh Token Rotation
 
-AuthBridge implements refresh token rotation to reduce replay attack risk.
+AccessFabric implements refresh token rotation to reduce replay attack risk.
 
 ### Flow
 
@@ -201,7 +201,7 @@ New Refresh Token Issuance
 
 # Tenant Isolation Strategy
 
-AuthBridge uses tenant-scoped identity isolation.
+AccessFabric uses tenant-scoped identity isolation.
 
 ### User uniqueness
 
@@ -231,7 +231,7 @@ Authorization is enforced through Spring Security route matchers and granted aut
 
 # Database Strategy
 
-AuthBridge uses PostgreSQL with Flyway-based schema versioning.
+AccessFabric uses PostgreSQL with Flyway-based schema versioning.
 
 ### Benefits
 
@@ -269,7 +269,7 @@ Planned future capabilities include:
 
 # Architectural Philosophy
 
-AuthBridge intentionally prioritizes:
+AccessFabric intentionally prioritizes:
 
 - clear modular boundaries
 - maintainable evolution paths

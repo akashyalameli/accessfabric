@@ -1,18 +1,18 @@
 <p align="center">
-  <img src="assets/authbridge-banner.png" alt="AuthBridge Banner"/>
+  <img src="assets/accessfabric-banner.png" alt="AccessFabric Banner"/>
 </p>
 
-# AuthBridge
+# AccessFabric
 
 Enterprise-grade multi-tenant authentication and authorization platform built for modern SaaS systems.
 
-AuthBridge demonstrates how production-ready identity infrastructure can be designed using modular architecture, secure token lifecycle management, tenant isolation, and role-based access control.
+AccessFabric demonstrates how production-ready identity infrastructure can be designed using modular architecture, secure token lifecycle management, tenant isolation, and role-based access control.
 
 > Designed and built as a platform-engineering showcase for enterprise-grade authentication systems.
 
 ---
 
-## Why AuthBridge?
+## Why AccessFabric?
 
 Modern SaaS platforms require more than simple login APIs.
 
@@ -25,7 +25,7 @@ They need:
 - Scalable modular architecture
 - Extensibility for federation protocols like SAML and OAuth2
 
-AuthBridge is an engineering-focused implementation of these capabilities.
+AccessFabric is an engineering-focused implementation of these capabilities.
 
 It demonstrates how identity systems can evolve from foundational authentication into a full enterprise IAM platform.
 
@@ -86,12 +86,12 @@ Capabilities:
 
 ## Architecture
 
-AuthBridge follows a **modular monolith** architecture designed for future service extraction.
+AccessFabric follows a **modular monolith** architecture designed for future service extraction.
 
 ### Backend Modules
 
 ```plaintext
-authbridge/
+accessfabric/
  ├── auth/
  ├── identity/
  ├── tenant/
@@ -227,7 +227,7 @@ Spring Security Authorization
 
 ```bash
 git clone https://github.com/akashyalameli/authbridge.git
-cd authbridge
+cd accessfabric
 ```
 
 ---
@@ -243,7 +243,7 @@ docker compose up -d
 ### Optional Environment Variables
 
 ```bash
-AUTHBRIDGE_JWT_SECRET=your-secure-secret
+ACCESSFABRIC_JWT_SECRET=your-secure-secret
 ```
 
 ---
@@ -355,7 +355,7 @@ GET /api/identity/me
 
 ## Design Principles
 
-AuthBridge emphasizes:
+AccessFabric emphasizes:
 
 ### Security First
 Authentication and authorization modeled as core platform concerns
@@ -408,4 +408,5 @@ GitHub: https://github.com/akashyalameli
 
 ## Purpose
 
-AuthBridge was built as a platform-engineering showcase to demonstrate enterprise-grade authentication and authorization system design.
+AccessFabric was built as a platform-engineering showcase to demonstrate enterprise-grade authentication and authorization system design.
+This project is not affiliated with or associated with any existing company or commercial product with a similar name.

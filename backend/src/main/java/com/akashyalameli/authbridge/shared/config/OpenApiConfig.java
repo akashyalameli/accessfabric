@@ -17,7 +17,7 @@ public class OpenApiConfig {
 
         return new OpenAPI()
                 .info(new Info()
-                        .title("AuthBridge API")
+                        .title("AccessFabric API")
                         .version("1.0")
                         .description("Enterprise authentication platform"))
                 .addSecurityItem(
